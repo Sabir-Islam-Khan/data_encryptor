@@ -115,6 +115,18 @@ void decryptText(char* string){
     }
 }
 
+void encryptAndDecrypt(){
+    char text[1000];
+
+    printf("Please enter a text:\n");
+    fflush(stdin);
+    gets(text);
+    encryptText(text);
+    printEncryptedText(text);
+    decryptText(text);
+    printDecryptedText(text);
+
+}
 // function to print encrypted text
 void printEncryptedText(char* string){
      printf("\n\n Encrypted Text is :\n \t %s\n\n",string);
@@ -123,6 +135,14 @@ void printEncryptedText(char* string){
 // function to print decrypted text
 void printDecryptedText(char* string){
     printf("\n\n Decrypted Text is :\n \t %s\n\n",string);
+}
+
+void submissionInfo(){
+    printf("\n\t\t\t********** Data Encryptor / Decryptor Program **********\n\n");
+    printf("\t\t\t********** Submitted by **********\n\n");
+    printf("\t\t\t           Md Sabir Islam khan \n\n");
+    printf("\t\t\t********** Submitted To **********\n\n");
+      printf("\t\t\t        Abdullah Ibn Ubaidullah \n\n\n");
 }
 // main program entry
 int main(){
@@ -135,14 +155,23 @@ int main(){
     while(flag){
         int choice;
         printf("Please enter choice to continue:\n");
-        printf("1. Encrypt Data\n");
-        printf("2. Decrypt Data\n");
+        printf("1. Submission Info\n");
+        printf("2. Encrypt and Decrypt\n");
+        printf("3. Encrypt Data and write to file \n");
+        printf("4. Decrypt Data\n");
         printf("0. Exit Application\n");
 
         scanf("%d",&choice);
 
         switch(choice) {
         case 1:
+            submissionInfo();
+            continue;
+        case 2:
+            encryptAndDecrypt();
+            fflush(stdin);
+            continue;
+        case 3:
 
                 printf("Please enter a text to encrypt:\n");
                 fflush(stdin);
@@ -161,10 +190,10 @@ int main(){
 
                 fclose(file); // Close the file
 
-                printf("Data written to the file successfully.\n");
+                printf("Data written to the file successfully.\n\n\n");
 
                 continue;
-        case 2:
+        case 4:
                 printf("Enter encrypted text:\n\n");
                 fflush(stdin);
                 gets(string);
@@ -173,6 +202,8 @@ int main(){
                 continue;
         case 0:
                 flag = false;
+        default:
+            printf("Pick a valid option.\n\n");
         }
     }
 
